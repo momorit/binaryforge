@@ -110,6 +110,7 @@
     list-style: none;
     display: flex;
     gap: 40px;
+    align-items: center;
   }
   nav a {
     font-family: var(--mono);
@@ -121,6 +122,23 @@
     transition: color 0.2s;
   }
   nav a:hover { color: var(--accent); }
+
+  .lang-btn {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent);
+    padding: 5px 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+  }
+  .lang-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
 
   /* HERO */
   #hero {
@@ -603,18 +621,19 @@
   }
 
   .person-avatar {
-    width: 72px; height: 72px;
+    width: 100px; height: 100px;
     border-radius: 0;
-    background: linear-gradient(135deg, var(--accent2), var(--accent));
     margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--bg);
+    overflow: hidden;
     clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    border: 2px solid var(--accent);
+  }
+  .person-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 
   .person-name {
@@ -832,10 +851,11 @@
 <nav>
   <a href="#" class="logo">BINARY<span>FORGE</span></a>
   <ul>
-    <li><a href="#services">Leistungen</a></li>
-    <li><a href="#approach">Ansatz</a></li>
+    <li><a href="#services" data-de="Leistungen" data-en="Services">Leistungen</a></li>
+    <li><a href="#approach" data-de="Ansatz" data-en="Approach">Ansatz</a></li>
     <li><a href="#about">Team</a></li>
-    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="#contact" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
+    <li><button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button></li>
   </ul>
 </nav>
 
@@ -848,32 +868,32 @@
   <div class="hero-content">
     <div class="hero-tag">Hamburg · Est. 2025</div>
     <h1>Build<br><em>What's</em><br>Next.</h1>
-    <p class="hero-sub">
+    <p class="hero-sub" data-de="Zwei Entwickler. Sieben Disziplinen. Wir erschaffen intelligente Systeme an der Schnittstelle von KI, Robotik und immersiven Technologien." data-en="Two engineers. Seven disciplines. We build intelligent systems at the intersection of AI, robotics, and immersive technologies.">
       Zwei Entwickler. Sieben Disziplinen. Wir erschaffen intelligente Systeme an der Schnittstelle von KI, Robotik und immersiven Technologien.
     </p>
     <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Projekt starten</a>
-      <a href="#services" class="btn-ghost">Leistungen →</a>
+      <a href="#contact" class="btn-primary" data-de="Projekt starten" data-en="Start a Project">Projekt starten</a>
+      <a href="#services" class="btn-ghost" data-de="Leistungen →" data-en="Services →">Leistungen →</a>
     </div>
   </div>
 
   <div class="stats-bar">
     <div class="stat-item">
       <div class="stat-num">2<span>+2</span></div>
-      <div class="stat-label">Gründer</div>
+      <div class="stat-label" data-de="Gründer" data-en="Founders">Gründer</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">7<span>+</span></div>
-      <div class="stat-label">Fachgebiete</div>
+      <div class="stat-label" data-de="Fachgebiete" data-en="Disciplines">Fachgebiete</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">∞</div>
-      <div class="stat-label">Möglichkeiten</div>
+      <div class="stat-label" data-de="Möglichkeiten" data-en="Possibilities">Möglichkeiten</div>
     </div>
   </div>
 
   <div class="ticker">
-    <div class="ticker-inner">
+    <div class="ticker-inner" id="tickerInner">
       <span class="ticker-item"><span>▸</span>KI-Integration</span>
       <span class="ticker-item"><span>▸</span>Produktentwicklung</span>
       <span class="ticker-item"><span>▸</span>Robotik</span>
@@ -881,7 +901,7 @@
       <span class="ticker-item"><span>▸</span>Virtual Reality</span>
       <span class="ticker-item"><span>▸</span>Augmented Reality</span>
       <span class="ticker-item"><span>▸</span>Data Science</span>
-      <span class="ticker-item"><span>▸</span>Chatbots & LLMs</span>
+      <span class="ticker-item"><span>▸</span>Chatbots &amp; LLMs</span>
       <span class="ticker-item"><span>▸</span>Digital Twins</span>
       <span class="ticker-item"><span>▸</span>KI-Integration</span>
       <span class="ticker-item"><span>▸</span>Produktentwicklung</span>
@@ -890,7 +910,7 @@
       <span class="ticker-item"><span>▸</span>Virtual Reality</span>
       <span class="ticker-item"><span>▸</span>Augmented Reality</span>
       <span class="ticker-item"><span>▸</span>Data Science</span>
-      <span class="ticker-item"><span>▸</span>Chatbots & LLMs</span>
+      <span class="ticker-item"><span>▸</span>Chatbots &amp; LLMs</span>
       <span class="ticker-item"><span>▸</span>Digital Twins</span>
     </div>
   </div>
@@ -902,10 +922,10 @@
 <section id="services">
   <div class="services-header reveal">
     <div>
-      <div class="section-label">// Leistungen</div>
-      <h2>Was wir<br>erschaffen.</h2>
+      <div class="section-label" data-de="// Leistungen" data-en="// Services">// Leistungen</div>
+      <h2 data-de="Was wir&lt;br&gt;erschaffen." data-en="What we&lt;br&gt;build.">Was wir<br>erschaffen.</h2>
     </div>
-    <p class="services-desc">
+    <p class="services-desc" data-de="Von der ersten Idee bis zum fertigen System. Wir bringen technische Tiefe und Gestaltungswillen mit — in jeder Disziplin." data-en="From the first idea to the finished system. We bring technical depth and creative drive — in every discipline.">
       Von der ersten Idee bis zum fertigen System. Wir bringen technische Tiefe und Gestaltungswillen mit — in jeder Disziplin.
     </p>
   </div>
@@ -914,43 +934,43 @@
     <div class="service-card reveal">
       <div class="service-num">01</div>
       <span class="service-icon">🤖</span>
-      <div class="service-name">KI & LLM-Systeme</div>
-      <p class="service-text">Von LLM-Agenten über RAG-Pipelines bis zu Chatbots — wir bauen KI-Lösungen, die echte Probleme lösen.</p>
+      <div class="service-name" data-de="KI &amp; LLM-Systeme" data-en="AI &amp; LLM Systems">KI &amp; LLM-Systeme</div>
+      <p class="service-text" data-de="Von LLM-Agenten über RAG-Pipelines bis zu Chatbots — wir bauen KI-Lösungen, die echte Probleme lösen." data-en="From LLM agents to RAG pipelines and chatbots — we build AI solutions that solve real problems.">Von LLM-Agenten über RAG-Pipelines bis zu Chatbots — wir bauen KI-Lösungen, die echte Probleme lösen.</p>
       <div class="service-arrow">↗</div>
     </div>
     <div class="service-card reveal">
       <div class="service-num">02</div>
       <span class="service-icon">🦾</span>
-      <div class="service-name">Robotik & Automation</div>
-      <p class="service-text">Intelligente Steuerungssysteme, Predictive Maintenance und autonome Workflows für industrielle Umgebungen.</p>
+      <div class="service-name" data-de="Robotik &amp; Automation" data-en="Robotics &amp; Automation">Robotik &amp; Automation</div>
+      <p class="service-text" data-de="Intelligente Steuerungssysteme, Predictive Maintenance und autonome Workflows für industrielle Umgebungen." data-en="Intelligent control systems, predictive maintenance, and autonomous workflows for industrial environments.">Intelligente Steuerungssysteme, Predictive Maintenance und autonome Workflows für industrielle Umgebungen.</p>
       <div class="service-arrow">↗</div>
     </div>
     <div class="service-card reveal">
       <div class="service-num">03</div>
       <span class="service-icon">🥽</span>
-      <div class="service-name">VR / AR Anwendungen</div>
-      <p class="service-text">Immersive Trainings-, Visualisierungs- und Inspektionssysteme. Von der Konzeption bis zur Unity-Umsetzung.</p>
+      <div class="service-name" data-de="VR / AR Anwendungen" data-en="VR / AR Applications">VR / AR Anwendungen</div>
+      <p class="service-text" data-de="Immersive Trainings-, Visualisierungs- und Inspektionssysteme. Von der Konzeption bis zur Unity-Umsetzung." data-en="Immersive training, visualization, and inspection systems. From concept to Unity implementation.">Immersive Trainings-, Visualisierungs- und Inspektionssysteme. Von der Konzeption bis zur Unity-Umsetzung.</p>
       <div class="service-arrow">↗</div>
     </div>
     <div class="service-card reveal">
       <div class="service-num">04</div>
       <span class="service-icon">📊</span>
-      <div class="service-name">Data Science & Analytics</div>
-      <p class="service-text">Dashboards, Modelle und Daten-Pipelines — wir machen komplexe Daten handlungsfähig.</p>
+      <div class="service-name">Data Science &amp; Analytics</div>
+      <p class="service-text" data-de="Dashboards, Modelle und Daten-Pipelines — wir machen komplexe Daten handlungsfähig." data-en="Dashboards, models, and data pipelines — we turn complex data into actionable insights.">Dashboards, Modelle und Daten-Pipelines — wir machen komplexe Daten handlungsfähig.</p>
       <div class="service-arrow">↗</div>
     </div>
     <div class="service-card reveal">
       <div class="service-num">05</div>
       <span class="service-icon">🧩</span>
-      <div class="service-name">Produktentwicklung</div>
-      <p class="service-text">Vom MVP zum skalierbaren Produkt. Wir denken in Systemen, liefern in Sprints, kommunizieren auf Augenhöhe.</p>
+      <div class="service-name" data-de="Produktentwicklung" data-en="Product Development">Produktentwicklung</div>
+      <p class="service-text" data-de="Vom MVP zum skalierbaren Produkt. Wir denken in Systemen, liefern in Sprints, kommunizieren auf Augenhöhe." data-en="From MVP to scalable product. We think in systems, deliver in sprints, and communicate as equals.">Vom MVP zum skalierbaren Produkt. Wir denken in Systemen, liefern in Sprints, kommunizieren auf Augenhöhe.</p>
       <div class="service-arrow">↗</div>
     </div>
     <div class="service-card reveal">
       <div class="service-num">06</div>
       <span class="service-icon">💬</span>
-      <div class="service-name">Chatbots & Interfaces</div>
-      <p class="service-text">Gesprächssysteme mit echtem Mehrwert — ob Kundenservice, interne Tools oder interaktive Agenten.</p>
+      <div class="service-name">Chatbots &amp; Interfaces</div>
+      <p class="service-text" data-de="Gesprächssysteme mit echtem Mehrwert — ob Kundenservice, interne Tools oder interaktive Agenten." data-en="Conversational systems with real value — whether customer service, internal tools, or interactive agents.">Gesprächssysteme mit echtem Mehrwert — ob Kundenservice, interne Tools oder interaktive Agenten.</p>
       <div class="service-arrow">↗</div>
     </div>
   </div>
@@ -960,37 +980,37 @@
 
 <!-- APPROACH -->
 <section id="approach">
-  <div class="section-label reveal">// Ansatz</div>
-  <h2 class="reveal">Wie wir<br>arbeiten.</h2>
+  <div class="section-label reveal" data-de="// Ansatz" data-en="// Approach">// Ansatz</div>
+  <h2 class="reveal" data-de="Wie wir&lt;br&gt;arbeiten." data-en="How we&lt;br&gt;work.">Wie wir<br>arbeiten.</h2>
 
   <div class="approach-wrap">
     <div class="approach-steps reveal">
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-body">
-          <div class="step-title">Verstehen</div>
-          <p class="step-text">Kein Raten, kein Schätzrahmen ohne Kontext. Wir hören erst zu, bevor wir anfangen zu bauen.</p>
+          <div class="step-title" data-de="Verstehen" data-en="Understand">Verstehen</div>
+          <p class="step-text" data-de="Kein Raten, kein Schätzrahmen ohne Kontext. Wir hören erst zu, bevor wir anfangen zu bauen." data-en="No guessing, no estimates without context. We listen first, then we build.">Kein Raten, kein Schätzrahmen ohne Kontext. Wir hören erst zu, bevor wir anfangen zu bauen.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-body">
-          <div class="step-title">Prototyp</div>
-          <p class="step-text">Schnell zu einem greifbaren Ergebnis. Frühe Iterationen sparen mehr Zeit als perfekte Pläne.</p>
+          <div class="step-title" data-de="Prototyp" data-en="Prototype">Prototyp</div>
+          <p class="step-text" data-de="Schnell zu einem greifbaren Ergebnis. Frühe Iterationen sparen mehr Zeit als perfekte Pläne." data-en="Fast to a tangible result. Early iterations save more time than perfect plans.">Schnell zu einem greifbaren Ergebnis. Frühe Iterationen sparen mehr Zeit als perfekte Pläne.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-body">
-          <div class="step-title">Entwickeln</div>
-          <p class="step-text">Klarer Code, dokumentierte Entscheidungen, keine Magic Boxes. Was wir bauen, können andere warten.</p>
+          <div class="step-title" data-de="Entwickeln" data-en="Develop">Entwickeln</div>
+          <p class="step-text" data-de="Klarer Code, dokumentierte Entscheidungen, keine Magic Boxes. Was wir bauen, können andere warten." data-en="Clean code, documented decisions, no magic boxes. What we build, others can maintain.">Klarer Code, dokumentierte Entscheidungen, keine Magic Boxes. Was wir bauen, können andere warten.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">04</div>
         <div class="step-body">
-          <div class="step-title">Übergeben</div>
-          <p class="step-text">Ein Projekt ist erst fertig, wenn das Team auf der anderen Seite damit eigenständig arbeiten kann.</p>
+          <div class="step-title" data-de="Übergeben" data-en="Hand Over">Übergeben</div>
+          <p class="step-text" data-de="Ein Projekt ist erst fertig, wenn das Team auf der anderen Seite damit eigenständig arbeiten kann." data-en="A project is only done when the team on the other side can work with it independently.">Ein Projekt ist erst fertig, wenn das Team auf der anderen Seite damit eigenständig arbeiten kann.</p>
         </div>
       </div>
     </div>
@@ -1016,14 +1036,14 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="section-label reveal">// Team</div>
-  <h2 class="reveal">Zwei Köpfe.<br>Eine Schmiede.</h2>
+  <h2 class="reveal" data-de="Zwei Köpfe.&lt;br&gt;Eine Schmiede." data-en="Two Minds.&lt;br&gt;One Forge.">Zwei Köpfe.<br>Eine Schmiede.</h2>
 
   <div class="about-grid">
     <div class="person-card reveal">
-      <div class="person-avatar">M</div>
+      <div class="person-avatar"><img src="moritz.png" alt="Moritz Treu"></div>
       <div class="person-name">Moritz Treu</div>
       <div class="person-role">AI · XR · Digital Twins</div>
-      <p class="person-bio">
+      <p class="person-bio" data-de="Digital Engineer mit Hintergrund in Maschinenbau und M.Sc. Digital Reality (HAW Hamburg). Baut LLM-Agenten-Pipelines, AR/VR-Anwendungen und KI-gestützte Digital Twins für industrielle Systeme. Erfahrung bei ai-omatic solutions und Mercedes-Benz. Ausgezeichnet mit dem Best 3DUI Contest Demo Honorable Mention auf der IEEE VR 2025." data-en="Digital Engineer with a background in mechanical engineering and M.Sc. Digital Reality (HAW Hamburg). Builds LLM agent pipelines, AR/VR applications, and AI-powered Digital Twins for industrial systems. Experience at ai-omatic solutions and Mercedes-Benz. Awarded Best 3DUI Contest Demo Honorable Mention at IEEE VR 2025.">
         Digital Engineer mit Hintergrund in Maschinenbau und M.Sc. Digital Reality (HAW Hamburg). Baut LLM-Agenten-Pipelines, AR/VR-Anwendungen und KI-gestützte Digital Twins für industrielle Systeme. Erfahrung bei ai-omatic solutions und Mercedes-Benz. Ausgezeichnet mit dem Best 3DUI Contest Demo Honorable Mention auf der IEEE VR 2025.
       </p>
       <div class="tags">
@@ -1036,10 +1056,10 @@
       <a href="https://www.linkedin.com/in/moritz-treu-31b3a318a/" target="_blank" rel="noopener" class="person-linkedin">↗ LinkedIn</a>
     </div>
     <div class="person-card reveal">
-      <div class="person-avatar">B</div>
+      <div class="person-avatar"><img src="ben.png" alt="Ben Huslage"></div>
       <div class="person-name">Ben Huslage</div>
       <div class="person-role">Robotics · Mechanical Design · Automation</div>
-      <p class="person-bio">
+      <p class="person-bio" data-de="Robotics Engineer mit Fokus auf mechanisches Design, Produktentwicklung und Automatisierung. Entwickelt flexible Soft-Robotic-Greifer bei SoftGripping und integrierte im Rahmen eines Auslandssemesters an der HSLU einen mobilen Assistenzroboter (Kinova Gen3 + Avular Origin One) mit ROS 2. Erfahrung mit Industrierobotern von KUKA, ABB und Stäubli." data-en="Robotics Engineer focused on mechanical design, product development, and automation. Develops flexible soft robotic grippers at SoftGripping and — during a semester abroad at HSLU — integrated a mobile assistive robot (Kinova Gen3 + Avular Origin One) using ROS 2. Experience with industrial robots from KUKA, ABB, and Stäubli.">
         Robotics Engineer mit Fokus auf mechanisches Design, Produktentwicklung und Automatisierung. Entwickelt flexible Soft-Robotic-Greifer bei SoftGripping und integrierte im Rahmen eines Auslandssemesters an der HSLU einen mobilen Assistenzroboter (Kinova Gen3 + Avular Origin One) mit ROS 2. Erfahrung mit Industrierobotern von KUKA, ABB und Stäubli.
       </p>
       <div class="tags">
@@ -1059,23 +1079,23 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-glow"></div>
-  <div class="section-label reveal">// Kontakt</div>
-  <h2 class="reveal">Lass uns etwas<br><em>Echtes</em> bauen.</h2>
-  <p class="reveal">Kein Pitch-Deck nötig. Schreib uns kurz, worum es geht — wir melden uns innerhalb von 24 Stunden.</p>
+  <div class="section-label reveal" data-de="// Kontakt" data-en="// Contact">// Kontakt</div>
+  <h2 class="reveal" data-de="Lass uns etwas&lt;br&gt;&lt;em&gt;Echtes&lt;/em&gt; bauen." data-en="Let's build something&lt;br&gt;&lt;em&gt;Real.&lt;/em&gt;">Lass uns etwas<br><em>Echtes</em> bauen.</h2>
+  <p class="reveal" data-de="Kein Pitch-Deck nötig. Schreib uns kurz, worum es geht — wir melden uns innerhalb von 24 Stunden." data-en="No pitch deck needed. Drop us a line — we'll get back to you within 24 hours.">Kein Pitch-Deck nötig. Schreib uns kurz, worum es geht — wir melden uns innerhalb von 24 Stunden.</p>
   <a href="mailto:info@moritz-treu.de" class="contact-email reveal">info@moritz-treu.de</a>
   <br>
   <a href="mailto:ben.huslage@gmail.com" class="contact-email reveal">ben.huslage@gmail.com</a>
   <br>
   <div class="hero-cta" style="justify-content:center" class="reveal">
-    <a href="mailto:info@moritz-treu.de" class="btn-primary">Projekt anfragen</a>
+    <a href="mailto:info@moritz-treu.de" class="btn-primary" data-de="Projekt anfragen" data-en="Start a Project">Projekt anfragen</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <a href="#" class="logo">BINARY<span>FORGE</span></a>
-  <p>Hamburg, Deutschland &nbsp;·&nbsp; Est. 2025</p>
-  <p>© 2025 BinaryForge. Alle Rechte vorbehalten.</p>
+  <p data-de="Hamburg, Deutschland &amp;nbsp;·&amp;nbsp; Est. 2025" data-en="Hamburg, Germany &amp;nbsp;·&amp;nbsp; Est. 2025">Hamburg, Deutschland &nbsp;·&nbsp; Est. 2025</p>
+  <p data-de="© 2025 BinaryForge. Alle Rechte vorbehalten." data-en="© 2025 BinaryForge. All rights reserved.">© 2025 BinaryForge. Alle Rechte vorbehalten.</p>
 </footer>
 
 <script>
@@ -1122,6 +1142,26 @@
       ring.style.height = '32px';
     });
   });
+
+  // LANGUAGE TOGGLE
+  const tickerDE = ['KI-Integration','Produktentwicklung','Robotik','Automatisierung','Virtual Reality','Augmented Reality','Data Science','Chatbots & LLMs','Digital Twins'];
+  const tickerEN = ['AI Integration','Product Development','Robotics','Automation','Virtual Reality','Augmented Reality','Data Science','Chatbots & LLMs','Digital Twins'];
+  let currentLang = 'de';
+
+  function buildTicker(items) {
+    const doubled = [...items, ...items];
+    return doubled.map(i => `<span class="ticker-item"><span>▸</span>${i}</span>`).join('');
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'de' ? 'en' : 'de';
+    document.getElementById('langBtn').textContent = currentLang === 'de' ? 'EN' : 'DE';
+    document.documentElement.lang = currentLang;
+    document.querySelectorAll('[data-de]').forEach(el => {
+      el.innerHTML = el.dataset[currentLang];
+    });
+    document.getElementById('tickerInner').innerHTML = buildTicker(currentLang === 'de' ? tickerDE : tickerEN);
+  }
 
   // REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
