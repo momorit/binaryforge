@@ -662,6 +662,26 @@
     color: var(--accent);
   }
 
+  .person-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .person-linkedin:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
   /* CONTACT / CTA */
   #contact {
     background: var(--bg);
@@ -1001,33 +1021,35 @@
   <div class="about-grid">
     <div class="person-card reveal">
       <div class="person-avatar">M</div>
-      <div class="person-name">Gründer I</div>
+      <div class="person-name">Moritz Treu</div>
       <div class="person-role">AI · XR · Digital Twins</div>
       <p class="person-bio">
-        M.Sc. Digital Reality, HAW Hamburg. Fokus auf immersive Datenvisualisierung, LLM-Pipelines und industrielle KI-Systeme. Forschungserfahrung in VR/AR, ausgezeichnet auf der IEEE VR 2025.
+        Digital Engineer mit Hintergrund in Maschinenbau und M.Sc. Digital Reality (HAW Hamburg). Baut LLM-Agenten-Pipelines, AR/VR-Anwendungen und KI-gestützte Digital Twins für industrielle Systeme. Erfahrung bei ai-omatic solutions und Mercedes-Benz. Ausgezeichnet mit dem Best 3DUI Contest Demo Honorable Mention auf der IEEE VR 2025.
       </p>
       <div class="tags">
         <span class="tag">LLM Agents</span>
-        <span class="tag">Unity / C#</span>
         <span class="tag">Digital Twins</span>
+        <span class="tag">AR / VR</span>
+        <span class="tag">Unity / C#</span>
         <span class="tag">Langchain</span>
-        <span class="tag">Node-RED</span>
       </div>
+      <a href="https://www.linkedin.com/in/moritz-treu-31b3a318a/" target="_blank" rel="noopener" class="person-linkedin">↗ LinkedIn</a>
     </div>
     <div class="person-card reveal">
-      <div class="person-avatar">K</div>
-      <div class="person-name">Gründer II</div>
-      <div class="person-role">Software · Automation · Robotics</div>
+      <div class="person-avatar">B</div>
+      <div class="person-name">Ben Huslage</div>
+      <div class="person-role">Robotics · Mechanical Design · Automation</div>
       <p class="person-bio">
-        Ingenieurshintergrund mit tiefem Know-how in Systemarchitektur und Automatisierung. Baut robuste, skalierbare Softwaresysteme für industrielle und kommerzielle Anforderungen.
+        Robotics Engineer mit Fokus auf mechanisches Design, Produktentwicklung und Automatisierung. Entwickelt flexible Soft-Robotic-Greifer bei SoftGripping und integrierte im Rahmen eines Auslandssemesters an der HSLU einen mobilen Assistenzroboter (Kinova Gen3 + Avular Origin One) mit ROS 2. Erfahrung mit Industrierobotern von KUKA, ABB und Stäubli.
       </p>
       <div class="tags">
-        <span class="tag">Python</span>
         <span class="tag">Robotics</span>
-        <span class="tag">Backend</span>
+        <span class="tag">ROS 2</span>
+        <span class="tag">Mechanical Design</span>
         <span class="tag">Automation</span>
-        <span class="tag">DevOps</span>
+        <span class="tag">Product Development</span>
       </div>
+      <a href="https://www.linkedin.com/in/ben-huslage-7a5b4b262/" target="_blank" rel="noopener" class="person-linkedin">↗ LinkedIn</a>
     </div>
   </div>
 </section>
